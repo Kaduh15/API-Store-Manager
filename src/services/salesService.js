@@ -1,3 +1,5 @@
+const camelize = require('camelize');
+
 const salesModel = require('../models/salesModel');
 const productsModel = require('../models/productsModel');
 
@@ -31,7 +33,21 @@ const getAll = async () => {
   const data = salesProducts.map((sale) => {
     const { date } = sales.find(({ id }) => id === sale.sale_id);
     const newSale = { ...sale, date };
-    return newSale;
+    return camelize(newSale);
+  });
+
+  return { type: null, data };
+};
+
+const getAllById = async (id) => {
+  const { date } = await salesModel.getSalesById(id);
+  console.log('🚀 ~ file: salesService.js ~ line 42 ~ getAllById ~ date', date);
+  const salesProducts = await salesModel.getAllSalesProductsById(id);
+  console.log('🚀 ~ file: salesService.js ~ line 44 ~ getAllById ~ salesProducts', salesProducts);
+
+  const data = salesProducts.map((sale) => {
+    const newSale = { ...sale, date };
+    return camelize(newSale);
   });
 
   return { type: null, data };
@@ -40,4 +56,5 @@ const getAll = async () => {
 module.exports = {
   createSale,
   getAll,
+  getAllById,
 };

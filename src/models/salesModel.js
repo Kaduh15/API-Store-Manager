@@ -26,10 +26,24 @@ const getAllSalesProducts = async () => {
   console.log(sales);
   return sales;
 };
+const getSalesById = async (id) => {
+  const query = 'SELECT * FROM sales WHERE id = ?';
+  const [[sales]] = await connection.execute(query, [id]);
+
+  return sales;
+};
+const getAllSalesProductsById = async (id) => {
+  const query = 'SELECT * FROM sales_products WHERE sale_id = ?';
+  const [sales] = await connection.execute(query, [id]);
+
+  return sales;
+};
 
 module.exports = {
   createSale,
   insertSaleProducts,
   getAllSales,
   getAllSalesProducts,
+  getSalesById,
+  getAllSalesProductsById,
 };
