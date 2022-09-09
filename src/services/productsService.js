@@ -21,7 +21,24 @@ const getAll = async () => {
   return result;
 };
 
+const insertProduct = async ({ name }) => {
+  const result = await productsModel.insertProduct(name);
+
+  if (!result) {
+    return {
+      type: 'ERROR',
+      data: {
+        message: 'Product already exists',
+      },
+    };
+  }
+
+  console.log(result);
+  return { type: 'SUCCESS_INSERT', data: result.insertId };
+};
+
 module.exports = {
   getAll,
   getById,
+  insertProduct,
 };
