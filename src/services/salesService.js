@@ -40,14 +40,22 @@ const getAll = async () => {
 };
 
 const getAllById = async (id) => {
-  const { date } = await salesModel.getSalesById(id);
-  console.log('🚀 ~ file: salesService.js ~ line 42 ~ getAllById ~ date', date);
+  const saleFromId = await salesModel.getSalesById(id);
+
+  if (!saleFromId) {
+    return {
+      type: 'NOT_FOUND',
+      data: {
+        message: 'Sale not found',
+      },
+    };
+  }
+
   const salesProducts = await salesModel.getAllSalesProductsById(id);
-  console.log('🚀 ~ file: salesService.js ~ line 44 ~ getAllById ~ salesProducts', salesProducts);
 
   const data = salesProducts.map((sale) => {
-    const newSale = { ...sale, date };
-    return camelize(newSale);
+    const { sale_id, ...rest } = { ...sale, date: saleFromId.date };
+    return camelize(rest);
   });
 
   return { type: null, data };
