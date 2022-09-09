@@ -5,6 +5,7 @@ const status = {
   ERRO: 400,
   'any.required': 400,
   'string.min': 422,
+  'number.min': 422,
 };
 
 const map = (type) => {
