@@ -30,9 +30,18 @@ const updateProductById = async (req, res, _next) => {
   res.status(statusMap(type)).json(data);
 };
 
+const deleteById = async (req, res, _next) => {
+  const { id } = req.params;
+
+  const { type, data } = await productsService.deleteById(id);
+
+  res.status(statusMap(type)).json(data);
+};
+
 module.exports = {
   getAll,
   getById,
   insertProduct,
   updateProductById,
+  deleteById,
 };

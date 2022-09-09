@@ -4,12 +4,14 @@ const productValidation = require('../middlewares/productValidation');
 
 const router = express.Router();
 
-router.post('/', productValidation, productsController.insertProduct);
-
 router.get('/', productsController.getAll);
 
 router.get('/:id', productsController.getById);
 
+router.post('/', productValidation, productsController.insertProduct);
+
 router.put('/:id', productValidation, productsController.updateProductById);
+
+router.delete('/:id', productsController.deleteById);
 
 module.exports = router;
