@@ -4,16 +4,16 @@
     "colId": "history",
     "containerId": "",
     "name": "https://localhost:3000",
-    "url": "http://localhost:3000/products",
-    "method": "POST",
+    "url": "http://localhost:3000/products/3",
+    "method": "PUT",
     "sortNum": 0,
     "created": "2022-09-08T23:33:11.354Z",
-    "modified": "2022-09-09T01:14:26.496Z",
+    "modified": "2022-09-09T13:11:10.035Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"name\": \"ted\"\n}",
+      "raw": "{\n  \"name\": \"ted55\"\n}",
       "form": []
     },
     "tests": []
@@ -24,10 +24,10 @@
     "containerId": "",
     "name": "http://localhost:3000/sales",
     "url": "http://localhost:3000/sales/1",
-    "method": "GET",
+    "method": "PUT",
     "sortNum": 0,
     "created": "2022-09-09T01:21:56.247Z",
-    "modified": "2022-09-09T12:54:09.366Z",
+    "modified": "2022-09-09T13:08:15.065Z",
     "headers": [],
     "params": [],
     "tests": []
