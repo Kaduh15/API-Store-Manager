@@ -1,5 +1,5 @@
 const productsService = require('../services/productsService');
-const { map: statusMap } = require('../utils/erroMap');
+const { map: statusMap } = require('../utils/statusMap');
 
 const getById = async (req, res, _next) => {
   const { id } = req.params;

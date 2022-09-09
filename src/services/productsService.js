@@ -26,14 +26,13 @@ const insertProduct = async ({ name }) => {
 
   if (!result) {
     return {
-      type: 'ERROR',
+      type: 'ERRO',
       data: {
         message: 'Product already exists',
       },
     };
   }
 
-  console.log(result);
   return { type: 'SUCCESS_INSERT', data: result.insertId };
 };
 
