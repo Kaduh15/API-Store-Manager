@@ -16,7 +16,7 @@ describe("Teste unitario do productsController", function () {
   afterEach(sinon.restore);
 
   it("Busca produto por com id existente", async function () {
-    sinon.stub(productsService, "getById").onFirstCall().resolves({
+    sinon.stub(productsService, "getById").resolves({
       type: null,
       data: getById,
     });
@@ -84,8 +84,8 @@ describe("Teste unitario do productsController", function () {
   });
 
   it("Deleta um produto", async function () {
-    sinon.stub(productsService, "updateProductById").resolves({
-      type: null,
+    sinon.stub(productsService, "deleteById").resolves({
+      type: "DELETE_SUCCESS",
       data: getById,
     });
 
