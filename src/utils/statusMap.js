@@ -9,10 +9,6 @@ const status = {
   'number.min': 422,
 };
 
-const map = (type) => {
-  console.log(type);
-  console.log(status[String(type)]);
-  return status[String(type)] || 500;
-};
+const map = (type) => status[String(type)] || 500;
 
 module.exports = { status, map };

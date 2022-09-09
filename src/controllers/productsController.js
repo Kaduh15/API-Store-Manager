@@ -12,7 +12,7 @@ const getById = async (req, res, _next) => {
 const getAll = async (_req, res, _next) => {
   const products = await productsService.getAll();
 
-  res.status(200).json(products);
+  res.status(statusMap(products.type)).json(products.data);
 };
 
 const insertProduct = async (req, res, _next) => {
