@@ -11,7 +11,6 @@ const getById = async (req, res, _next) => {
 
 const getAll = async (_req, res, _next) => {
   const products = await productsService.getAll();
-
   res.status(statusMap(products.type)).json(products.data);
 };
 

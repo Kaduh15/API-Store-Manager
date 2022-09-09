@@ -18,7 +18,7 @@ const getById = async (id) => {
 const getAll = async () => {
   const result = await productsModel.getAll();
 
-  return result;
+  return { type: null, data: result };
 };
 
 const insertProduct = async ({ name }) => {

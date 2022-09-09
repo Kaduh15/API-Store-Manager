@@ -14,7 +14,10 @@ const getAll = [
   }
 ];
 
+const insertProduct = 2;
+
 module.exports = {
   getById,
   getAll,
-}
+  insertProduct,
+};

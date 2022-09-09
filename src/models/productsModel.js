@@ -39,7 +39,6 @@ const updateProductById = async (id, name) => {
 const deleteById = async (id) => {
   const query = 'DELETE FROM products WHERE id = ?';
   const [result] = await connection.execute(query, [id]);
-  console.log('🚀 ~ file: productsModel.js ~ line 42 ~ deleteById ~ result', result);
 
   return result;
 };
