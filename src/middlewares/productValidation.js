@@ -1,10 +1,6 @@
-const joi = require('joi');
+const { productSchema } = require('../schemas/productSchemas');
 
 const { map: statusMap } = require('../utils/statusMap');
-
-const productSchema = joi.object({
-  name: joi.string().min(5).required(),
-});
 
 const productValidation = (req, res, next) => {
   const { body } = req;
