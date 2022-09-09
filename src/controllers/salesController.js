@@ -8,6 +8,13 @@ const createSale = async (req, res, _next) => {
   res.status(statusMap(result.type)).json({ ...result.data });
 };
 
+const getAll = async (_req, _res, _next) => {
+  const result = await salesService.getAll();
+
+  _res.status(statusMap(result.type)).json(result.data);
+};
+
 module.exports = {
   createSale,
+  getAll,
 };

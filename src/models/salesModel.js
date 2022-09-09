@@ -7,12 +7,6 @@ const createSale = async () => {
   return sale;
 };
 
-const getProductById = async (productId) => {
-  const query = 'SELECT * FROM products WHERE id = ?';
-  const [[product]] = await connection.execute(query, [productId]);
-  return { ...product };
-};
-
 const insertSaleProducts = async (saleId, { productId, quantity }) => {
   const query = 'INSERT INTO sales_products (sale_id, product_id, quantity) VALUES (?, ?, ?)';
   const [sale] = await connection.execute(query, [saleId, productId, quantity]);
@@ -20,8 +14,22 @@ const insertSaleProducts = async (saleId, { productId, quantity }) => {
   return sale;
 };
 
+const getAllSales = async () => {
+  const query = 'SELECT * FROM sales';
+  const [sales] = await connection.execute(query);
+  console.log(sales);
+  return sales;
+};
+const getAllSalesProducts = async () => {
+  const query = 'SELECT * FROM sales_products';
+  const [sales] = await connection.execute(query);
+  console.log(sales);
+  return sales;
+};
+
 module.exports = {
   createSale,
-  getProductById,
   insertSaleProducts,
+  getAllSales,
+  getAllSalesProducts,
 };
