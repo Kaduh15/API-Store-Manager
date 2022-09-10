@@ -65,10 +65,18 @@ const deleteById = async (id) => {
   return { type: 'DELETE_SUCCESS' };
 };
 
+const getByName = async (name) => {
+  if (!name) return { type: null, data: await productsModel.getAll() };
+  const result = await productsModel.getByName(name);
+
+  return { type: null, data: result };
+};
+
 module.exports = {
   getAll,
   getById,
   insertProduct,
   updateProductById,
   deleteById,
+  getByName,
 };

@@ -37,10 +37,19 @@ const deleteById = async (req, res, _next) => {
   res.status(statusMap(type)).json(data);
 };
 
+const getByName = async (req, res) => {
+  const { q } = req.query;
+
+  const { type, data } = await productsService.getByName(q);
+
+  res.status(statusMap(type)).json(data);
+};
+
 module.exports = {
   getAll,
   getById,
   insertProduct,
   updateProductById,
   deleteById,
+  getByName,
 };
