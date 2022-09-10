@@ -5,7 +5,6 @@ const productsModel = require('../models/productsModel');
 const { validationIdSale, validationIdProducts } = require('./utils');
 
 const createSale = async (sales) => {
-  console.log('🚀 ~ file: salesService.js ~ line 8 ~ createSale ~ sales', sales);
   const getProductPromises = sales.map(async ({ productId }) => productsModel.getById(productId));
 
   const result = await Promise.all(getProductPromises);
@@ -19,9 +18,9 @@ const createSale = async (sales) => {
       },
     };
   }
-  const resultSaleCreated = await salesModel.createSale();
-  sales.forEach(async (sale) => salesModel.insertSaleProducts(resultSaleCreated.insertId, sale));
-  return { type: 'SUCCESS_INSERT', data: { id: resultSaleCreated.insertId, itemsSold: sales } };
+  const insertId = await salesModel.createSale();
+  sales.forEach(async (sale) => salesModel.insertSaleProducts(insertId, sale));
+  return { type: 'SUCCESS_INSERT', data: { id: insertId, itemsSold: sales } };
 };
 
 const getAll = async () => {
@@ -50,6 +49,7 @@ const getAllById = async (id) => {
   }
 
   const salesProducts = await salesModel.getAllSalesProductsById(id);
+  console.log('🚀 ~ file: salesService.js ~ line 52 ~ getAllById ~ salesProducts', salesProducts);
 
   const data = salesProducts.map((sale) => {
     const { sale_id, ...rest } = { ...sale, date: saleFromId.date };

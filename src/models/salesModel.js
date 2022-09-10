@@ -2,16 +2,16 @@ const connection = require('./connection');
 
 const createSale = async () => {
   const query = 'INSERT INTO sales VALUES ()';
-  const [sale] = await connection.execute(query);
+  const [{ insertId }] = await connection.execute(query);
 
-  return sale;
+  return insertId;
 };
 
 const insertSaleProducts = async (saleId, { productId, quantity }) => {
   const query = 'INSERT INTO sales_products (sale_id, product_id, quantity) VALUES (?, ?, ?)';
-  const [sale] = await connection.execute(query, [saleId, productId, quantity]);
+  const [{ affectedRows }] = await connection.execute(query, [saleId, productId, quantity]);
 
-  return sale;
+  return affectedRows;
 };
 
 const getAllSales = async () => {
@@ -44,15 +44,15 @@ const getAllSalesProductsById = async (id) => {
 
 const deleteSalesProductsById = async (id) => {
   const query = 'DELETE FROM sales_products WHERE sale_id = ?';
-  const [result] = await connection.execute(query, [id]);
+  const [{ affectedRows }] = await connection.execute(query, [id]);
 
-  return result;
+  return affectedRows;
 };
 const deleteSaleById = async (id) => {
   const query = 'DELETE FROM sales WHERE id = ?';
-  const [result] = await connection.execute(query, [id]);
+  const [{ affectedRows }] = await connection.execute(query, [id]);
 
-  return result;
+  return affectedRows;
 };
 
 const updateSalesProducts = async (saleId, { productId, quantity }) => {

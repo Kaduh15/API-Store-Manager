@@ -5,10 +5,10 @@
     "containerId": "",
     "name": "http://localhost:3000/sales/1",
     "url": "http://localhost:3000/sales",
-    "method": "POST",
+    "method": "GET",
     "sortNum": 0,
     "created": "2022-09-10T11:07:50.348Z",
-    "modified": "2022-09-10T13:45:10.411Z",
+    "modified": "2022-09-10T14:24:16.302Z",
     "headers": [],
     "params": [],
     "body": {

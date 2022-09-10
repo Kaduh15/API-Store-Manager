@@ -1,31 +1,24 @@
-const allProducts = [
-  {
-    id: 1,
-    name: "Martelo de Thor",
-  },
-  {
-    id: 2,
-    name: "Traje de encolhimento",
-  },
-  {
-    id: 3,
-    name: "Escudo do Capitão América",
-  },
+const getAllSales = [
+  { id: 1, date: '2022-09-10T14:28:01.000Z' },
+  { id: 2, date: '2022-09-10T14:28:01.000Z' }
 ];
 
-const product1 = {
-  id: 1,
-  name: "BORA BILL",
-};
+const getAllSalesProducts = [
+  { sale_id: 1, product_id: 1, quantity: 5 },
+  { sale_id: 1, product_id: 2, quantity: 10 },
+  { sale_id: 2, product_id: 3, quantity: 15 }
+]
 
-const updateProduct = {
-  id: 1,
-  name: "BORA FI DO BILL",
-};
+const getSalesById = { id: 1, date: '2022-09-10T14:31:30.000Z' }
 
+const getAllSalesProductsById = [
+  { sale_id: 1, product_id: 1, quantity: 5 },
+  { sale_id: 1, product_id: 2, quantity: 10 }
+]
 
 module.exports = {
-  allProducts,
-  updateProduct,
-  product1,
+  getAllSales,
+  getAllSalesProducts,
+  getSalesById,
+  getAllSalesProductsById,
 };
