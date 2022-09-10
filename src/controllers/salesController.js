@@ -22,8 +22,17 @@ const getAllById = async (req, res, _next) => {
   res.status(statusMap(type)).json(data);
 };
 
+const deleteById = async (req, res, _next) => {
+  const { id } = req.params;
+
+  const { type, data } = await salesService.deleteById(id);
+
+  res.status(statusMap(type)).json(data);
+};
+
 module.exports = {
   createSale,
   getAll,
   getAllById,
+  deleteById,
 };

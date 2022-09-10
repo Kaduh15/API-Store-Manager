@@ -20,23 +20,38 @@ const getAllSales = async () => {
   console.log(sales);
   return sales;
 };
+
 const getAllSalesProducts = async () => {
   const query = 'SELECT * FROM sales_products';
   const [sales] = await connection.execute(query);
   console.log(sales);
   return sales;
 };
+
 const getSalesById = async (id) => {
   const query = 'SELECT * FROM sales WHERE id = ?';
   const [[sales]] = await connection.execute(query, [id]);
 
   return sales;
 };
+
 const getAllSalesProductsById = async (id) => {
   const query = 'SELECT * FROM sales_products WHERE sale_id = ?';
   const [sales] = await connection.execute(query, [id]);
 
   return sales;
+};
+
+const deleteSalesProductsById = async (id) => {
+  const query = 'DELETE FROM sales_products WHERE sale_id = ?';
+  const [result] = await connection.execute(query, [id]);
+
+  return result;
+};
+const deleteSaleById = async (id) => {
+  const query = 'DELETE FROM sales WHERE id = ?';
+  const [result] = await connection.execute(query, [id]);
+  return result;
 };
 
 module.exports = {
@@ -46,4 +61,6 @@ module.exports = {
   getAllSalesProducts,
   getSalesById,
   getAllSalesProductsById,
+  deleteSalesProductsById,
+  deleteSaleById,
 };
