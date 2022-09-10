@@ -33,7 +33,7 @@ const insertProduct = async ({ name }) => {
     };
   }
 
-  return { type: 'SUCCESS_INSERT', data: result.insertId };
+  return { type: 'SUCCESS_INSERT', data: result };
 };
 
 const updateProductById = async (id, { name }) => {

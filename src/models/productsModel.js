@@ -7,12 +7,6 @@ const getById = async (id) => {
   return product;
 };
 
-const getProductById = async (productId) => {
-  const query = 'SELECT * FROM products WHERE id = ?';
-  const [[product]] = await connection.execute(query, [productId]);
-  return { ...product };
-};
-
 const getAll = async () => {
   const query = 'SElECT * FROM products';
   const [products] = await connection.execute(query);
@@ -22,10 +16,9 @@ const getAll = async () => {
 
 const insertProduct = async (name) => {
   const query = 'INSERT INTO products (name) VALUES (?)';
-  const [result] = await connection.execute(query, [name]);
+  const [{ insertId }] = await connection.execute(query, [name]);
 
-  console.log(result.insertId);
-  return result;
+  return insertId;
 };
 
 const updateProductById = async (id, name) => {
@@ -37,9 +30,9 @@ const updateProductById = async (id, name) => {
 
 const deleteById = async (id) => {
   const query = 'DELETE FROM products WHERE id = ?';
-  const [result] = await connection.execute(query, [id]);
+  const [{ affectedRows }] = await connection.execute(query, [id]);
 
-  return result;
+  return affectedRows;
 };
 
 const getByName = async (name) => {
@@ -51,7 +44,6 @@ const getByName = async (name) => {
 
 module.exports = {
   getAll,
-  getProductById,
   getById,
   insertProduct,
   updateProductById,

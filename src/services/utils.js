@@ -18,11 +18,11 @@ const validationIdSale = async (id) => {
 
 const validationIdProducts = async (salesProducts) => {
   const getProductPromises = salesProducts.map(async ({ productId }) =>
-    productsModel.getProductById(productId));
+    productsModel.getById(productId));
 
   const result = await Promise.all(getProductPromises);
 
-  const idsNotExists = result.some(({ id }) => !id);
+  const idsNotExists = result.some((product) => !product);
 
   if (idsNotExists) {
     return {

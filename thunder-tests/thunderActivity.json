@@ -4,16 +4,16 @@
     "colId": "history",
     "containerId": "",
     "name": "http://localhost:3000/sales/1",
-    "url": "http://localhost:3000/sales/1",
-    "method": "PUT",
+    "url": "http://localhost:3000/sales",
+    "method": "POST",
     "sortNum": 0,
     "created": "2022-09-10T11:07:50.348Z",
-    "modified": "2022-09-10T11:30:39.735Z",
+    "modified": "2022-09-10T13:45:10.411Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "[\r\n  {\r\n    \"productId\": 1,\r\n    \"quantity\": 10\r\n  },\r\n  {\r\n    \"productId\": 2,\r\n    \"quantity\": 50\r\n  }\r\n]",
+      "raw": "[\n  {\n    \"productId\": 1,\n    \"quantity\": 10\n  },\n  {\n    \"productId\": 2,\n    \"quantity\": 50\n  }\n]",
       "form": []
     },
     "tests": []
@@ -39,6 +39,39 @@
     "body": {
       "type": "json",
       "raw": "{\n  \"name\": \"d\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "7f3a0206-fa9b-496d-87d2-f39cde3332f7",
+    "colId": "history",
+    "containerId": "",
+    "name": "http://localhost:3000/products",
+    "url": "http://localhost:3000/products",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2022-09-10T12:55:22.362Z",
+    "modified": "2022-09-10T13:02:13.205Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "b743e5da-554d-42a1-94fe-de28de17bd62",
+    "colId": "history",
+    "containerId": "",
+    "name": "http://localhost:3000/products/1",
+    "url": "http://localhost:3000/products/1",
+    "method": "PUT",
+    "sortNum": 0,
+    "created": "2022-09-10T13:09:15.771Z",
+    "modified": "2022-09-10T14:05:23.341Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"name\": \"BORA FI DO BILL\"\n}",
       "form": []
     },
     "tests": []
