@@ -10,21 +10,21 @@ const createSale = async () => {
 const insertSaleProducts = async (saleId, { productId, quantity }) => {
   const query = 'INSERT INTO sales_products (sale_id, product_id, quantity) VALUES (?, ?, ?)';
   const [sale] = await connection.execute(query, [saleId, productId, quantity]);
-  console.log(`salesModel: ${JSON.stringify(sale)}`);
+
   return sale;
 };
 
 const getAllSales = async () => {
   const query = 'SELECT * FROM sales';
   const [sales] = await connection.execute(query);
-  console.log(sales);
+
   return sales;
 };
 
 const getAllSalesProducts = async () => {
   const query = 'SELECT * FROM sales_products';
   const [sales] = await connection.execute(query);
-  console.log(sales);
+
   return sales;
 };
 
@@ -51,6 +51,14 @@ const deleteSalesProductsById = async (id) => {
 const deleteSaleById = async (id) => {
   const query = 'DELETE FROM sales WHERE id = ?';
   const [result] = await connection.execute(query, [id]);
+
+  return result;
+};
+
+const updateSalesProducts = async (saleId, { productId, quantity }) => {
+  const query = 'UPDATE sales_products SET quantity = ? WHERE sale_Id = ? AND product_Id = ?';
+  const [result] = await connection.execute(query, [quantity, saleId, productId]);
+
   return result;
 };
 
@@ -63,4 +71,5 @@ module.exports = {
   getAllSalesProductsById,
   deleteSalesProductsById,
   deleteSaleById,
+  updateSalesProducts,
 };

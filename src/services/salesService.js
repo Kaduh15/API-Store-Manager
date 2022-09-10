@@ -2,6 +2,7 @@ const camelize = require('camelize');
 
 const salesModel = require('../models/salesModel');
 const productsModel = require('../models/productsModel');
+const { validationIdSale, validationIdProducts } = require('./utils');
 
 const createSale = async (sales) => {
   const getProductPromises = sales.map(async ({ productId }) =>
@@ -80,9 +81,34 @@ const deleteById = async (id) => {
   return { type: 'DELETE_SUCCESS' };
 };
 
+const updateSalesProduct = async (id, salesProducts) => {
+  const hasIdSale = await validationIdSale(id);
+  if (hasIdSale.type) return hasIdSale;
+  const hasIdproduct = await validationIdProducts(salesProducts);
+  if (hasIdproduct) return hasIdproduct;
+
+  const salesProductsPromises = salesProducts.map(async (saleProduct) =>
+    salesModel.updateSalesProducts(id, saleProduct));
+
+  await Promise.all(salesProductsPromises);
+
+  const result = await salesModel.getAllSalesProductsById(id);
+
+  const data = result.map(({ sale_id, ...rest }) => camelize(rest));
+
+  return {
+    type: null,
+    data: {
+      saleId: id,
+      itemsUpdated: data,
+    },
+  };
+};
+
 module.exports = {
   createSale,
   getAll,
   getAllById,
   deleteById,
+  updateSalesProduct,
 };

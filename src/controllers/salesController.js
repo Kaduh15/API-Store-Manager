@@ -30,9 +30,19 @@ const deleteById = async (req, res, _next) => {
   res.status(statusMap(type)).json(data);
 };
 
+const updateSalesProduct = async (req, res, _next) => {
+  const { id } = req.params;
+  const { body } = req;
+
+  const { type, data } = await salesService.updateSalesProduct(id, body);
+
+  res.status(statusMap(type)).json(data);
+};
+
 module.exports = {
   createSale,
   getAll,
   getAllById,
   deleteById,
+  updateSalesProduct,
 };

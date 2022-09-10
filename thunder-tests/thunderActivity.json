@@ -1,35 +1,21 @@
 [
   {
-    "_id": "13bc489b-fa79-4b3c-ad73-ec3256939740",
+    "_id": "25a6ce0b-d5b9-4667-b08d-f21b02c9a936",
     "colId": "history",
     "containerId": "",
-    "name": "https://localhost:3000",
-    "url": "http://localhost:3000/products/4",
-    "method": "GET",
+    "name": "http://localhost:3000/sales/1",
+    "url": "http://localhost:3000/sales/1",
+    "method": "PUT",
     "sortNum": 0,
-    "created": "2022-09-08T23:33:11.354Z",
-    "modified": "2022-09-09T18:48:30.959Z",
+    "created": "2022-09-10T11:07:50.348Z",
+    "modified": "2022-09-10T11:30:39.735Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"name\": \"ted55\"\n}",
+      "raw": "[\r\n  {\r\n    \"productId\": 1,\r\n    \"quantity\": 10\r\n  },\r\n  {\r\n    \"productId\": 2,\r\n    \"quantity\": 50\r\n  }\r\n]",
       "form": []
     },
-    "tests": []
-  },
-  {
-    "_id": "25a6ce0b-d5b9-4667-b08d-f21b02c9a936",
-    "colId": "history",
-    "containerId": "",
-    "name": "http://localhost:3000/sales",
-    "url": "http://localhost:3000/sales/1",
-    "method": "DELETE",
-    "sortNum": 0,
-    "created": "2022-09-09T01:21:56.247Z",
-    "modified": "2022-09-10T10:29:03.166Z",
-    "headers": [],
-    "params": [],
     "tests": []
   }
 ]
