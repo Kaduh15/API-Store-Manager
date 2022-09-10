@@ -49,7 +49,6 @@ const getAllById = async (id) => {
   }
 
   const salesProducts = await salesModel.getAllSalesProductsById(id);
-  console.log('🚀 ~ file: salesService.js ~ line 52 ~ getAllById ~ salesProducts', salesProducts);
 
   const data = salesProducts.map((sale) => {
     const { sale_id, ...rest } = { ...sale, date: saleFromId.date };

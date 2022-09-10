@@ -63,4 +63,20 @@ describe("Teste unitario do salesController", function () {
     expect(res.status).to.have.been.calledWith(200);
     expect(res.json).to.have.been.calledWith(getAllById);
   });
+
+  it("Deleta uma vendas por id", async function () {
+    sinon.stub(salesService, "deleteById").resolves({
+      type: "DELETE_SUCCESS",
+    });
+
+    const res = {};
+    const req = {params: { id: 1 }};
+
+    res.status = sinon.stub().returns(res);
+    res.json = sinon.stub().returns();
+
+    await salesController.getAllById(req, res);
+    expect(res.status).to.have.been.calledWith(200);
+    expect(res.json).to.have.been.calledWith();
+  });
 });
